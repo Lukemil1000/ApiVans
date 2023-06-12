@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -16,29 +15,41 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-@Table(name = "registro")
-public class Registro implements Serializable{
+@Table(name = "escola")
+public class Escola implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "id_van")
-    private Long idVan;
+    @Column(name = "nome")
+    private String nome;
 
-    @Column(name = "horario")
-    private Timestamp horario;
+    @Column(name = "cnpj")
+    private String cnpj;
 
-    @Column(name = "id_escola")
-    private Long idEscola;
+    @Column(name = "telefone")
+    private Integer telefone;
+
+    @Column(name = "bairro")
+    private String bairro;
+
+    @Column(name = "rua")
+    private String rua;
+
+    @Column(name = "numero")
+    private Integer numero;
+
+    @Column(name = "complemento")
+    private String complemento;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Registro registro = (Registro) o;
-        return id != null && Objects.equals(id, registro.id);
+        Escola escola = (Escola) o;
+        return id != null && Objects.equals(id, escola.id);
     }
 
     @Override
