@@ -5,7 +5,9 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -35,6 +37,11 @@ public class Van implements Serializable {
     @Column(name = "qrcode")
     private String qrcode;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "van_motoristas",
+            joinColumns = @JoinColumn(name = "van_id"),
+            inverseJoinColumns = @JoinColumn(name = "motoristas_id"))
+    private Set<Motorista> motoristas = new LinkedHashSet<>();
 
     @Override
     public boolean equals(Object o) {

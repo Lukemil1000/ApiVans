@@ -5,7 +5,9 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -46,6 +48,12 @@ public class Motorista implements Serializable {
 
     @Column(name = "complemento")
     private String complemento;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "van_motoristas",
+            joinColumns = @JoinColumn(name = "motoristas_id"),
+            inverseJoinColumns = @JoinColumn(name = "van_id"))
+    private Set<Van> vans = new LinkedHashSet<>();
 
     @Override
     public boolean equals(Object o) {
