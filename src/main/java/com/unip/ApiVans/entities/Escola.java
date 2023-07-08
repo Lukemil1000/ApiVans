@@ -8,15 +8,28 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "escola")
 public class Escola implements Serializable {
+
+    public Escola(Long id, String nome, String cnpj, String telefone, String bairro, String rua, Integer numero,
+                  String complemento) {
+        this.id = id;
+        this.nome = nome;
+        this.cnpj = cnpj;
+        this.telefone = telefone;
+        this.bairro = bairro;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +43,7 @@ public class Escola implements Serializable {
     private String cnpj;
 
     @Column(name = "telefone")
-    private Integer telefone;
+    private String telefone;
 
     @Column(name = "bairro")
     private String bairro;
@@ -43,6 +56,9 @@ public class Escola implements Serializable {
 
     @Column(name = "complemento")
     private String complemento;
+
+    @ManyToMany(mappedBy = "escolas", cascade = CascadeType.PERSIST)
+    private Set<Van> vans = new LinkedHashSet<>();
 
     @Override
     public boolean equals(Object o) {

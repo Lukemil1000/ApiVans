@@ -1,5 +1,6 @@
 package com.unip.ApiVans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -62,10 +63,8 @@ public class Motorista implements Serializable {
     @Column(name = "complemento")
     private String complemento;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "van_motoristas",
-            joinColumns = @JoinColumn(name = "motoristas_id"),
-            inverseJoinColumns = @JoinColumn(name = "van_id"))
+    @JsonIgnore
+    @ManyToMany(mappedBy = "motoristas", cascade = CascadeType.PERSIST)
     private Set<Van> vans = new LinkedHashSet<>();
 
     @Override
