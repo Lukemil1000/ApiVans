@@ -9,13 +9,26 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "motorista")
 public class Motorista implements Serializable {
+
+    public Motorista(Long id, String nome, String telefone, String rg, String cpf, String cnh, String bairro,
+                     String rua, Integer numero, String complemento) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.cnh = cnh;
+        this.bairro = bairro;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +39,7 @@ public class Motorista implements Serializable {
     private String nome;
 
     @Column(name = "telefone")
-    private Integer telefone;
+    private String telefone;
 
     @Column(name = "rg")
     private String rg;

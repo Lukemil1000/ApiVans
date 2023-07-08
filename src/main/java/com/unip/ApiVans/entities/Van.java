@@ -11,11 +11,19 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Table(name = "van")
 public class Van implements Serializable {
+
+    public Van(Long id, String placa, String modelo, String cor, String documento, String qrcode) {
+        this.id = id;
+        this.placa = placa;
+        this.modelo = modelo;
+        this.cor = cor;
+        this.documento = documento;
+        this.qrcode = qrcode;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
