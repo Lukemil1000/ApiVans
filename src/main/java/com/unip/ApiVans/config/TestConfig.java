@@ -41,6 +41,7 @@ public class TestConfig implements CommandLineRunner {
 
         Escola e1 = new Escola(null, "Escola1", "cnpj1", "telefone", "bairro", "Rua",
                 123, "complemento");
+        escolaRepository.saveAll(Arrays.asList(e1));
 
         v1.getMotoristas().add(m1);
         v2.getMotoristas().add(m2);
