@@ -1,6 +1,9 @@
 package com.unip.ApiVans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -63,7 +66,8 @@ public class Motorista implements Serializable {
     @Column(name = "complemento")
     private String complemento;
 
-    @JsonIgnore
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToMany(mappedBy = "motoristas", cascade = CascadeType.PERSIST)
     private Set<Van> vans = new LinkedHashSet<>();
 

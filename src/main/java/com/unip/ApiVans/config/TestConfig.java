@@ -58,6 +58,7 @@ public class TestConfig implements CommandLineRunner {
 
         v1.getMotoristas().add(m1);
         v2.getMotoristas().add(m2);
+        v1.getMotoristas().add(m2);
         v1.getEscolas().add(e1);
         v2.getEscolas().add(e1);
         vanRepository.saveAll(Arrays.asList(v1, v2));
