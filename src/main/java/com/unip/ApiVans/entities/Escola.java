@@ -1,5 +1,6 @@
 package com.unip.ApiVans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -59,6 +60,9 @@ public class Escola implements Serializable {
 
     @ManyToMany(mappedBy = "escolas", cascade = CascadeType.PERSIST)
     private Set<Van> vans = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "escola", cascade = CascadeType.ALL)
+    private Set<Registro> registros = new LinkedHashSet<>();
 
     @Override
     public boolean equals(Object o) {

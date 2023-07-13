@@ -2,15 +2,20 @@ package com.unip.ApiVans.config;
 
 import com.unip.ApiVans.entities.Escola;
 import com.unip.ApiVans.entities.Motorista;
+import com.unip.ApiVans.entities.Registro;
 import com.unip.ApiVans.entities.Van;
 import com.unip.ApiVans.repositories.EscolaRepository;
 import com.unip.ApiVans.repositories.MotoristaRepository;
+import com.unip.ApiVans.repositories.RegistroRepository;
 import com.unip.ApiVans.repositories.VanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Configuration
@@ -25,6 +30,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private EscolaRepository escolaRepository;
+
+    @Autowired
+    private RegistroRepository registroRepository;
 
     @Override
     public void run(String... args) {
@@ -41,7 +49,12 @@ public class TestConfig implements CommandLineRunner {
 
         Escola e1 = new Escola(null, "Escola1", "cnpj1", "telefone", "bairro", "Rua",
                 123, "complemento");
+
+        Registro r1 = new Registro(null, 1L, LocalDateTime.now(), e1);
+        registroRepository.saveAll(Arrays.asList(r1));
+
         escolaRepository.saveAll(Arrays.asList(e1));
+
 
         v1.getMotoristas().add(m1);
         v2.getMotoristas().add(m2);

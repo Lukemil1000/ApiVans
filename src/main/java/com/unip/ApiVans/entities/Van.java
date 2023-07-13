@@ -47,16 +47,16 @@ public class Van implements Serializable {
     private String qrcode;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "van_motoristas",
+    @JoinTable(name = "vans_motoristas",
             joinColumns = @JoinColumn(name = "van_id"),
-            inverseJoinColumns = @JoinColumn(name = "motoristas_id"))
+            inverseJoinColumns = @JoinColumn(name = "motorista_id"))
     private Set<Motorista> motoristas = new LinkedHashSet<>();
 
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "van_escolas",
+    @JoinTable(name = "vans_escolas",
             joinColumns = @JoinColumn(name = "van_id"),
-            inverseJoinColumns = @JoinColumn(name = "escolas_id"))
+            inverseJoinColumns = @JoinColumn(name = "escola_id"))
     private Set<Escola> escolas = new LinkedHashSet<>();
 
     @Override
