@@ -59,6 +59,9 @@ public class Van implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "escola_id"))
     private Set<Escola> escolas = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "van", cascade = CascadeType.ALL)
+    private Set<Registro> registros = new LinkedHashSet<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -29,11 +29,14 @@ public class Registro implements Serializable{
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "id_van")
-    private Long idVan;
-
     @Column(name = "horario")
     private LocalDateTime horario;
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "van_id")
+    private Van van;
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)

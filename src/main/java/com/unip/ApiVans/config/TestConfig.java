@@ -39,20 +39,20 @@ public class TestConfig implements CommandLineRunner {
 
         Van v1 = new Van(null, "ABC123", "Modelo1", "Branco", "Documento1", "Qrcode1");
         Van v2 = new Van(null, "DEF456", "Modelo2", "Cinza", "Documento2", "Qrcode2");
-        vanRepository.saveAll(Arrays.asList(v1, v2));
 
         Motorista m1 = new Motorista(null, "Pedro", "(12)12121-2121", "rg1", "cpf1", "chn1",
                 "Bairro", "Rua", 111, "complemento");
         Motorista m2 = new Motorista(null, "João", "(12)12121-2121", "rg2", "cpf2", "chn2",
                 "Bairro", "Rua", 222, "complemento");
-        motoristaRepository.saveAll(Arrays.asList(m1, m2));
 
         Escola e1 = new Escola(null, "Escola1", "cnpj1", "telefone", "bairro", "Rua",
                 123, "complemento");
 
-        Registro r1 = new Registro(null, 1L, LocalDateTime.now(), e1);
-        registroRepository.saveAll(Arrays.asList(r1));
+        Registro r1 = new Registro(null,  LocalDateTime.now(), v1, e1);
 
+        registroRepository.saveAll(Arrays.asList(r1));
+        vanRepository.saveAll(Arrays.asList(v1, v2));
+        motoristaRepository.saveAll(Arrays.asList(m1, m2));
         escolaRepository.saveAll(Arrays.asList(e1));
 
 
