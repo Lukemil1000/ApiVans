@@ -1,5 +1,8 @@
 package com.unip.ApiVans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +11,7 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -28,16 +31,19 @@ public class RegistroFalha implements Serializable {
     private String placa;
 
     @Column(name = "horario")
-    private Timestamp horario;
-
-    @Column(name = "id_escola")
-    private Long idEscola;
+    private LocalDateTime horario;
 
     @Column(name = "qrcode")
     private String qrcode;
 
     @Column(name = "motivo")
     private String motivo;
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "escola_id")
+    private Escola escola;
 
     @Override
     public boolean equals(Object o) {

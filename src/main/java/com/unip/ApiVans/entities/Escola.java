@@ -64,6 +64,9 @@ public class Escola implements Serializable {
     @OneToMany(mappedBy = "escola", cascade = CascadeType.ALL)
     private Set<Registro> registros = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "escola", cascade = CascadeType.ALL)
+    private Set<RegistroFalha> registrosFalha = new LinkedHashSet<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

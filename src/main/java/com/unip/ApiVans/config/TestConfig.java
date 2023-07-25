@@ -1,20 +1,12 @@
 package com.unip.ApiVans.config;
 
-import com.unip.ApiVans.entities.Escola;
-import com.unip.ApiVans.entities.Motorista;
-import com.unip.ApiVans.entities.Registro;
-import com.unip.ApiVans.entities.Van;
-import com.unip.ApiVans.repositories.EscolaRepository;
-import com.unip.ApiVans.repositories.MotoristaRepository;
-import com.unip.ApiVans.repositories.RegistroRepository;
-import com.unip.ApiVans.repositories.VanRepository;
+import com.unip.ApiVans.entities.*;
+import com.unip.ApiVans.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
@@ -34,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private RegistroRepository registroRepository;
 
+    @Autowired
+    private RegistroFalhaRepository registroFalhaRepository;
+
     @Override
     public void run(String... args) {
 
@@ -50,6 +45,8 @@ public class TestConfig implements CommandLineRunner {
 
         Registro r1 = new Registro(null,  LocalDateTime.now(), v1, e1);
 
+
+
         registroRepository.saveAll(Arrays.asList(r1));
         vanRepository.saveAll(Arrays.asList(v1, v2));
         motoristaRepository.saveAll(Arrays.asList(m1, m2));
@@ -62,5 +59,12 @@ public class TestConfig implements CommandLineRunner {
         v1.getEscolas().add(e1);
         v2.getEscolas().add(e1);
         vanRepository.saveAll(Arrays.asList(v1, v2));
+
+        RegistroFalha f1 = new RegistroFalha(null, "XYZ987", LocalDateTime.now(), "Qrcode3",
+                "Placa não está presente no sistema", e1);
+
+        e1.getRegistrosFalha().add(f1);
+        escolaRepository.saveAll(Arrays.asList(e1));
+
     }
 }

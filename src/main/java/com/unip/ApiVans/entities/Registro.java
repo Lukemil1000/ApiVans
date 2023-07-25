@@ -12,7 +12,6 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
