@@ -1,5 +1,8 @@
 package com.unip.ApiVans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,11 +38,14 @@ public class Usuario implements Serializable {
     @Column(name = "nivel_acesso")
     private Integer nivelAcesso;
 
-    @Column(name = "id_escola")
-    private Long idEscola;
-
     @Column(name = "telefone")
-    private Integer telefone;
+    private String telefone;
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "escola_id")
+    private Escola escola;
 
     @Override
     public boolean equals(Object o) {

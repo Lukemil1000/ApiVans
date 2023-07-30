@@ -29,6 +29,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private RegistroFalhaRepository registroFalhaRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @Override
     public void run(String... args) {
 
@@ -45,7 +48,8 @@ public class TestConfig implements CommandLineRunner {
 
         Registro r1 = new Registro(null,  LocalDateTime.now(), v1, e1);
 
-
+        Usuario u1 = new Usuario(null, "Lucas", "Usuario1", "senha123", 1,
+                "(12)12121-2121", e1);
 
         registroRepository.saveAll(Arrays.asList(r1));
         vanRepository.saveAll(Arrays.asList(v1, v2));
@@ -65,6 +69,7 @@ public class TestConfig implements CommandLineRunner {
 
         e1.getRegistrosFalha().add(f1);
         escolaRepository.saveAll(Arrays.asList(e1));
-
+        e1.getUsuarios().add(u1);
+        escolaRepository.saveAll(Arrays.asList(e1));
     }
 }
