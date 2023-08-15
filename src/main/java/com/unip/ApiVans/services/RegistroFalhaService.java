@@ -1,5 +1,6 @@
 package com.unip.ApiVans.services;
 
+import com.unip.ApiVans.entities.Motorista;
 import com.unip.ApiVans.entities.RegistroFalha;
 import com.unip.ApiVans.repositories.RegistroFalhaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,9 @@ public class RegistroFalhaService {
     public RegistroFalha findById(Long id) {
         Optional<RegistroFalha> obj = repository.findById(id);
         return obj.get();
+    }
+
+    public RegistroFalha insert(RegistroFalha obj) {
+        return repository.save(obj);
     }
 }
