@@ -1,7 +1,6 @@
 package com.unip.ApiVans.services;
 
 import com.unip.ApiVans.entities.Escola;
-import com.unip.ApiVans.entities.Motorista;
 import com.unip.ApiVans.repositories.EscolaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

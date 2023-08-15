@@ -1,6 +1,5 @@
 package com.unip.ApiVans.services;
 
-import com.unip.ApiVans.entities.Motorista;
 import com.unip.ApiVans.entities.RegistroFalha;
 import com.unip.ApiVans.repositories.RegistroFalhaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

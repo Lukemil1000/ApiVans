@@ -22,4 +22,8 @@ public class RegistroService {
         Optional<Registro> obj = repository.findById(id);
         return obj.get();
     }
+
+    public Registro insert(Registro obj) {
+        return repository.save(obj);
+    }
 }
