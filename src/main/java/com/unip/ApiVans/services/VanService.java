@@ -22,4 +22,8 @@ public class VanService {
         Optional<Van> obj = repository.findById(id);
         return obj.get();
     }
+
+    public Van insert(Van obj) {
+        return repository.save(obj);
+    }
 }
