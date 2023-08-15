@@ -22,4 +22,8 @@ public class MotoristaService {
         Optional<Motorista> obj = repository.findById(id);
         return obj.get();
     }
+
+    public Motorista insert(Motorista obj) {
+        return repository.save(obj);
+    }
 }
