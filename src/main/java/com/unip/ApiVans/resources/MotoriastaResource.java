@@ -38,4 +38,10 @@ public class MotoriastaResource {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Motorista> update(@PathVariable Long id, @RequestBody Motorista obj) {
+        obj = service.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 }

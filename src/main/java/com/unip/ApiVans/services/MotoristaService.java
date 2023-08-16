@@ -30,4 +30,37 @@ public class MotoristaService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public Motorista update(Long id, Motorista obj) {
+        Motorista entity = repository.getReferenceById(id);
+        //ifs
+        if(obj.getNome() != null) {
+            entity.setNome(obj.getNome());
+        }
+        if(obj.getTelefone() != null) {
+            entity.setTelefone(obj.getTelefone());
+        }
+        if(obj.getRg() != null) {
+            entity.setRg(obj.getRg());
+        }
+        if(obj.getCpf() != null) {
+            entity.setCpf(obj.getCpf());
+        }
+        if(obj.getCnh() != null) {
+            entity.setCnh(obj.getCnh());
+        }
+        if(obj.getBairro() != null) {
+            entity.setBairro(obj.getBairro());
+        }
+        if(obj.getRua() != null) {
+            entity.setRua(obj.getRua());
+        }
+        if(obj.getNumero() != null) {
+            entity.setNumero(obj.getNumero());
+        }
+        if(obj.getComplemento() != null) {
+            entity.setComplemento(obj.getComplemento());
+        }
+        return repository.save(entity);
+    }
 }
