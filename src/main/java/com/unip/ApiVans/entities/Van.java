@@ -17,13 +17,13 @@ import java.util.Set;
 @Table(name = "van")
 public class Van implements Serializable {
 
-    public Van(Long id, String placa, String modelo, String cor, String documento, String qrcode) {
+    public Van(Long id, String placa, String modelo, String cor, String documento, Integer codigo) {
         this.id = id;
         this.placa = placa;
         this.modelo = modelo;
         this.cor = cor;
         this.documento = documento;
-        this.qrcode = qrcode;
+        this.codigo = codigo;
     }
 
     @Id
@@ -43,8 +43,8 @@ public class Van implements Serializable {
     @Column(name = "documento")
     private String documento;
 
-    @Column(name = "qrcode")
-    private String qrcode;
+    @Column(name = "codigo")
+    private Integer codigo;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "vans_motoristas",

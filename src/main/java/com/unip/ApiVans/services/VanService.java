@@ -26,4 +26,9 @@ public class VanService {
     public Van insert(Van obj) {
         return repository.save(obj);
     }
+
+    public Van findByPlacaAndCodigo(String placa, Integer codigo) {
+        Van obj = repository.findByPlacaAndCodigo(placa, codigo);
+        return obj;
+    }
 }

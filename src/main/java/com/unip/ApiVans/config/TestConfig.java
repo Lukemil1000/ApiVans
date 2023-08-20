@@ -35,8 +35,8 @@ public class TestConfig implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        Van v1 = new Van(null, "ABC123", "Modelo1", "Branco", "Documento1", "Qrcode1");
-        Van v2 = new Van(null, "DEF456", "Modelo2", "Cinza", "Documento2", "Qrcode2");
+        Van v1 = new Van(null, "ABC123", "Modelo1", "Branco", "Documento1", 111);
+        Van v2 = new Van(null, "DEF456", "Modelo2", "Cinza", "Documento2", 222);
 
         Motorista m1 = new Motorista(null, "Pedro", "(12)12121-2121", "rg1", "cpf1", "chn1",
                 "Bairro", "Rua", 111, "complemento");

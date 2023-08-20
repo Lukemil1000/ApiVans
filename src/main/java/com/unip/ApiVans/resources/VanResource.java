@@ -34,4 +34,10 @@ public class VanResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping(value = "/{placa}/{codigo}")
+    public ResponseEntity<Van> findByPlacaAndCodigo(@PathVariable("placa") String placa, @PathVariable("codigo")Integer codigo) {
+        Van obj = service.findByPlacaAndCodigo(placa, codigo);
+        return ResponseEntity.ok().body(obj);
+    }
+
 }
